@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TPO Management System - Attendance</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/attendance.css" />
+    <script type="module" src="/js/attendance.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">TPO Management System</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/student-profile.html">Student Profile</a>
+        <a href="/attendance.html" class="active">Attendance</a>
+        <a href="/timetable.html">Timetable</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <ul class="sidebar-nav">
+          <li><a href="#" data-action="mark" class="active">Mark Attendance</a></li>
+          <li><a href="#" data-action="update">Update Attendance</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <section id="mark-section" class="attendance-section">
+          <div class="section-selector">
+            <h2>Mark Attendance</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="batch-year">Batch Year</label>
+                <input type="number" id="batch-year" min="2020" max="2030" placeholder="e.g., 2025" />
+              </div>
+              <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester">
+                  <option value="">Select Semester</option>
+                  <option value="odd">Odd</option>
+                  <option value="even">Even</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year">
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="branch">Branch</label>
+                <select id="branch">
+                  <option value="">Select Branch</option>
+                  <option value="CSE">CSE</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="MECH">MECH</option>
+                </select>
+              </div>
+            </div>
+            <button id="fetch-sections" class="btn primary">Fetch Sections</button>
+          </div>
+
+          <div id="sections-list" class="sections-grid" style="display: none"></div>
+          <div id="training-dates" class="dates-grid" style="display: none"></div>
+
+          <div id="attendance-list" class="attendance-container" style="display: none">
+            <table class="attendance-table">
+              <thead>
+                <tr>
+                  <th>Hall Ticket Number</th>
+                  <th>Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="students-list"></tbody>
+            </table>
+            <div class="submit-container">
+              <button id="submit-attendance" class="btn primary">Submit Attendance</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="update-section" class="attendance-section" style="display: none">
+          <!-- Update attendance section will be implemented later -->
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

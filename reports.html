@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TPO Management System - Reports</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/reports.css" />
+    <script type="module" src="/js/reports.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">TPO Management System</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/student-profile.html">Student Profile</a>
+        <a href="/attendance.html">Attendance</a>
+        <a href="/timetable.html">Timetable</a>
+        <a href="/reports.html" class="active">Reports</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="report-filters">
+        <div class="form-group">
+          <label for="report-year">Year</label>
+          <select id="report-year">
+            <option value="">All Years</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="report-branch">Branch</label>
+          <select id="report-branch">
+            <option value="">All Branches</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="report-section">Section</label>
+          <select id="report-section">
+            <option value="">All Sections</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="report-summary">
+        <div class="summary-card">
+          <h3>Total Students</h3>
+          <div class="value">198</div>
+        </div>
+        <div class="summary-card">
+          <h3>Average Attendance</h3>
+          <div class="value">85%</div>
+        </div>
+        <div class="summary-card">
+          <h3>Training Sessions</h3>
+          <div class="value">24</div>
+        </div>
+      </div>
+
+      <div class="report-container">
+        <h2>Attendance Report</h2>
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Roll Number</th>
+              <th>Name</th>
+              <th>Year</th>
+              <th>Branch</th>
+              <th>Section</th>
+              <th>Attendance %</th>
+            </tr>
+          </thead>
+          <tbody id="report-data">
+            <!-- Data will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TPO Management System - Timetable</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/timetable.css" />
+    <script type="module" src="/js/timetable.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">TPO Management System</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/student-profile.html">Student Profile</a>
+        <a href="/attendance.html">Attendance</a>
+        <a href="/timetable.html" class="active">Timetable</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <ul class="sidebar-nav">
+          <li>
+            <a href="#" data-action="view" class="active">View Schedule</a>
+          </li>
+          <li><a href="#" data-action="prepare">Prepare Schedule</a></li>
+          <li><a href="#" data-action="generate">Generate Sessions</a></li>
+          <li><a href="#" data-action="dates">View Training Dates</a></li>
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <section id="view-section" class="schedule-section">
+          <div class="filter-container">
+            <div class="form-group">
+              <label for="branch">Select Branch</label>
+              <select id="branch">
+                <option value="">Select Branch</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="timetable-container" class="timetable-container"></div>
+        </section>
+
+        <section
+          id="prepare-section"
+          class="schedule-section"
+          style="display: none"
+        >
+          <div class="section-selector">
+            <h2>Prepare Schedule</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="batch-year">Batch Year</label>
+                <input
+                  type="number"
+                  id="batch-year"
+                  min="2020"
+                  max="2030"
+                  placeholder="e.g., 2025"
+                />
+              </div>
+              <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester">
+                  <option value="">Select Semester</option>
+                  <option value="odd">Odd</option>
+                  <option value="even">Even</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="year">Year</label>
+                <select id="year">
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="prepare-branch">Branch</label>
+                <select id="prepare-branch">
+                  <option value="">Select Branch</option>
+                  <option value="CSE">CSE</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="MECH">MECH</option>
+                </select>
+              </div>
+            </div>
+            <button id="fetch-sections" class="btn primary">
+              Fetch Sections
+            </button>
+          </div>
+
+          <div
+            id="sections-schedule"
+            class="sections-schedule"
+            style="display: none"
+          >
+            <div id="sections-list"></div>
+            <button id="create-schedule" class="btn primary">
+              Create Schedule
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="dates-section"
+          class="schedule-section"
+          style="display: none"
+        >
+          <div class="section-selector">
+            <h2>View Training Dates</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dates-batch-year">Batch Year</label>
+                <input
+                  type="number"
+                  id="dates-batch-year"
+                  min="2020"
+                  max="2030"
+                  placeholder="e.g., 2025"
+                />
+              </div>
+              <div class="form-group">
+                <label for="dates-semester">Semester</label>
+                <select id="dates-semester">
+                  <option value="">Select Semester</option>
+                  <option value="odd">Odd</option>
+                  <option value="even">Even</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dates-year">Year</label>
+                <select id="dates-year">
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dates-branch">Branch</label>
+                <select id="dates-branch">
+                  <option value="">Select Branch</option>
+                  <option value="CSE">CSE</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="MECH">MECH</option>
+                </select>
+              </div>
+            </div>
+            <button id="fetch-dates-sections" class="btn primary">
+              Fetch Sections
+            </button>
+          </div>
+
+          <div
+            id="dates-sections-list"
+            class="sections-list"
+            style="display: none"
+          ></div>
+          <div
+            id="training-dates-list"
+            class="training-dates-list"
+            style="display: none"
+          ></div>
+        </section>
+
+        <section
+          id="generate-section"
+          class="schedule-section"
+          style="display: none"
+        >
+          <div class="section-selector">
+            <h2>Generate Training Sessions</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="gen-batch-year">Batch Year</label>
+                <input
+                  type="number"
+                  id="gen-batch-year"
+                  min="2020"
+                  max="2030"
+                  placeholder="e.g., 2025"
+                />
+              </div>
+              <div class="form-group">
+                <label for="gen-year">Year</label>
+                <select id="gen-year" required>
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="gen-semester">Semester</label>
+                <select id="gen-semester">
+                  <option value="">Select Semester</option>
+                  <option value="odd">Odd</option>
+                  <option value="even">Even</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="gen-branch">Branch</label>
+                <select id="gen-branch">
+                  <option value="">Select Branch</option>
+                  <option value="CSE">CSE</option>
+                  <option value="ECE">ECE</option>
+                  <option value="EEE">EEE</option>
+                  <option value="MECH">MECH</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="semester-start">Semester Start Date</label>
+                <input type="date" id="semester-start" required />
+              </div>
+              <div class="form-group">
+                <label for="semester-end">Semester End Date</label>
+                <input type="date" id="semester-end" required />
+              </div>
+            </div>
+            <button id="generate-sessions" class="btn primary">
+              Generate Sessions
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TPO Management System - Student Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/student-profile.css" />
+    <script type="module" src="/js/student-profile.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">TPO Management System</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/student-profile.html" class="active">Student Profile</a>
+        <a href="/attendance.html">Attendance</a>
+        <a href="/timetable.html">Timetable</a>
+        <a href="/reports.html">Reports</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="search-section">
+        <div class="search-container">
+          <h2>Search Student</h2>
+          <div class="search-input">
+            <input type="text" id="searchInput" placeholder="Enter Hall Ticket Number or Full Name" />
+            <button id="searchButton" class="btn primary">Search</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="student-profile" style="display: none;">
+        <div class="profile-header">
+          <div class="profile-image">
+            <img src="https://via.placeholder.com/150" alt="Student Photo" />
+          </div>
+          <div class="profile-details">
+            <h2>Student Details</h2>
+            <div class="details-grid"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
